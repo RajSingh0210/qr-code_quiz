@@ -190,7 +190,7 @@ export default function Home() {
             A quick, knowledge check
           </h1>
           <p className="mx-auto max-w-2xl text-sm text-slate-600 sm:text-base">
-            Share your details, take a short timed quiz, and instantly see how you scored.
+          Take a quick quiz and stand a chance to win surprise gift
           </p>
         </header>
 
