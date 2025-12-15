@@ -40,19 +40,19 @@ export function ResultStep({ result, breakdown, questions, isWinner, onReset }: 
             {isPerfectScore ? (
               <>
                 <p className="text-2xl font-bold text-orange-600 sm:text-3xl">
-                  Winner! Winner!
+                 Awesome!
                 </p>
                 <p className="text-base text-slate-600 sm:text-lg">
-                  Perfect score! Hope you enjoyed the quiz!
+                 You are Champion!
                 </p>
               </>
             ) : (
               <>
                 <p className="text-xl font-semibold text-slate-800 sm:text-2xl">
-                  Congratulations!
+                  Sorry!!!
                 </p>
                 <p className="text-base text-slate-600 sm:text-lg">
-                  Hope you enjoyed the quiz!
+                Thank you for taking the quiz!
                 </p>
               </>
             )}
