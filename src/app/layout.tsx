@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   description:
     "Scan a QR code, capture warm leads, and auto-email quiz scores in one flow.",
   icons: {
-    icon: "/globe.svg",
+    icon: "/favicon.ico",
   },
 };
 
