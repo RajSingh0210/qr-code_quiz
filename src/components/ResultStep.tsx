@@ -18,6 +18,7 @@ type Props = {
 
 export function ResultStep({ result, breakdown, questions, isWinner, onReset }: Props) {
   const isPerfectScore = result.score === result.total;
+  const isHighScore = result.score >= 5;
 
   return (
     <section className="space-y-6 rounded-2xl border border-slate-200 bg-white/95 p-6 text-center shadow-sm sm:p-8 sm:shadow-md">
@@ -37,13 +38,13 @@ export function ResultStep({ result, breakdown, questions, isWinner, onReset }: 
             Score: {result.score}/{result.total}
           </h2>
           <div className="space-y-2">
-            {isPerfectScore ? (
+            {isHighScore ? (
               <>
                 <p className="text-2xl font-bold text-orange-600 sm:text-3xl">
-                 Awesome!
+                 Congratulations!
                 </p>
                 <p className="text-base text-slate-600 sm:text-lg">
-                 You are Champion!
+                 You are the winner!
                 </p>
               </>
             ) : (
@@ -52,7 +53,7 @@ export function ResultStep({ result, breakdown, questions, isWinner, onReset }: 
                   Oops!!!
                 </p>
                 <p className="text-base text-slate-600 sm:text-lg">
-                Thank you for taking the quiz!
+                Thank you for taking the quiz!
                 </p>
               </>
             )}
