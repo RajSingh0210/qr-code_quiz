@@ -94,7 +94,7 @@ export default function Home() {
     setHasSubmitted(false);
   }, [answers, sessionQuestions]);
 
-  const timeLeft = useCountdown(15, [currentIndex, step]);
+  const timeLeft = useCountdown(20, [currentIndex, step]);
 
   useEffect(() => {
     if (step === "quiz") {
@@ -126,7 +126,7 @@ export default function Home() {
   useEffect(() => {
     if (step === "quiz" && timeLeft === 0) {
       const elapsed = Date.now() - timerStartRef.current;
-      if (elapsed < 14000) return; // avoid any premature auto-advance
+      if (elapsed < 19000) return; // avoid any premature auto-advance
       handleAdvance(true);
     }
   }, [handleAdvance, step, timeLeft]);
@@ -182,17 +182,19 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-slate-50 px-3 py-6 text-slate-900 sm:px-5 sm:py-8 lg:px-6 lg:py-10">
       <div className="mx-auto flex w-full max-w-screen-sm flex-col gap-5 rounded-2xl border border-slate-200 bg-white p-4 shadow-lg shadow-blue-50 sm:gap-6 sm:p-7 lg:gap-8 lg:p-9">
-        <header className="space-y-3 text-center sm:space-y-4">
-          <div className="flex justify-center">
-            <img src="/logo.png" alt="Actuaria Consultants" className="h-12 w-auto sm:h-14" />
-          </div>
-          <h1 className="text-[26px] font-bold leading-tight tracking-tight text-slate-900 sm:text-4xl">
-            A quick, knowledge check
-          </h1>
-          <p className="mx-auto max-w-2xl text-sm text-slate-600 sm:text-base">
-          Take a quick quiz and stand a chance to win surprise gift
-          </p>
-        </header>
+        {step !== "quiz" && (
+          <header className="space-y-3 text-center sm:space-y-4">
+            <div className="flex justify-center">
+              <img src="/logo.png" alt="Actuaria Consultants" className="h-12 w-auto sm:h-14" />
+            </div>
+            <h1 className="text-[26px] font-bold leading-tight tracking-tight text-slate-900 sm:text-4xl">
+             Take a quick test
+            </h1>
+            <p className="mx-auto max-w-2xl text-sm text-slate-600 sm:text-base">
+             A perfect score unlocks a surprise gift!!!
+            </p>
+          </header>
+        )}
 
         <ProgressIndicator ratio={completedRatio} step={step} />
 

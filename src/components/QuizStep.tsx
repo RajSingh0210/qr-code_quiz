@@ -35,7 +35,7 @@ export function QuizStep({
           </div>
           <h2 className="text-2xl font-bold text-slate-900 sm:text-3xl">Timed quiz</h2>
           <p className="text-sm text-slate-600 sm:text-base">
-            Answer within 15 seconds per question
+            Answer within 20 seconds per question
           </p>
         </div>
         <div className="flex flex-wrap items-center gap-3 sm:gap-4">
