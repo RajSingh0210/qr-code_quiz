@@ -1,6 +1,7 @@
 "use client";
 
 import { type FormEvent, useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 
 import { ContactForm } from "@/components/ContactForm";
 import { ProgressIndicator } from "@/components/ProgressIndicator";
@@ -198,37 +199,63 @@ export default function Home() {
 
         <ProgressIndicator ratio={completedRatio} step={step} />
 
-        {step === "contact" && (
-          <ContactForm
-            contact={contact}
-            errors={contactErrors}
-            onChange={handleContactChange}
-            onSubmit={handleContactSubmit}
-          />
-        )}
+        <AnimatePresence mode="wait">
+          {step === "contact" && (
+            <motion.div
+              key="contact"
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -20 }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+            >
+              <ContactForm
+                contact={contact}
+                errors={contactErrors}
+                onChange={handleContactChange}
+                onSubmit={handleContactSubmit}
+              />
+            </motion.div>
+          )}
 
-        {step === "quiz" && currentQuestion && (
-          <QuizStep
-            currentQuestion={currentQuestion}
-            currentIndex={currentIndex}
-            total={sessionQuestions.length}
-            answers={answers}
-            timer={timeLeft}
-            quizError={quizError}
-            onAnswer={handleAnswer}
-            onAdvance={() => handleAdvance(false)}
-          />
-        )}
+          {step === "quiz" && currentQuestion && (
+            <motion.div
+              key="quiz"
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -20 }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+            >
+              <QuizStep
+                currentQuestion={currentQuestion}
+                currentIndex={currentIndex}
+                total={sessionQuestions.length}
+                answers={answers}
+                timer={timeLeft}
+                quizError={quizError}
+                onAnswer={handleAnswer}
+                onAdvance={() => handleAdvance(false)}
+              />
+            </motion.div>
+          )}
 
-        {step === "result" && result && (
-          <ResultStep
-            result={result}
-            breakdown={breakdown}
-            questions={sessionQuestions}
-            isWinner={isWinner}
-            onReset={resetFlow}
-          />
-        )}
+          {step === "result" && result && (
+            <motion.div
+              key="result"
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -20 }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+            >
+              <ResultStep
+                result={result}
+                breakdown={breakdown}
+                questions={sessionQuestions}
+                isWinner={isWinner}
+                onReset={resetFlow}
+              />
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </div>
   );
